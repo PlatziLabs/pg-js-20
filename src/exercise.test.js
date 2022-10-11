@@ -1,31 +1,34 @@
-import { mergeArrays } from "./exercise";
+import { flatArray } from "./exercise";
 
 describe("tests", () => {
-  it("should return [1,2,3,4]", () => {
-    const arrayA = [1, 2];
-    const arrayB = [3, 4];
-    const rta = mergeArrays(arrayA, arrayB);
-    expect(rta).toEqual([1, 2, 3, 4]);
-  });
-
   it("should return [1,2,3,4,5]", () => {
-    const arrayA = [1, 2];
-    const arrayB = [3, 4, 5];
-    const rta = mergeArrays(arrayA, arrayB);
+    const array = [
+      [1, 2],
+      [3, 4],
+      [5]
+    ];
+    const rta = flatArray(array);
     expect(rta).toEqual([1, 2, 3, 4, 5]);
   });
 
-  it("should return [3,4,5]", () => {
-    const arrayA = [];
-    const arrayB = [3, 4, 5];
-    const rta = mergeArrays(arrayA, arrayB);
-    expect(rta).toEqual([3, 4, 5]);
+  it("should return [1,2,5]", () => {
+    const array = [
+      [1, 2],
+      [],
+      [5]
+    ];
+    const rta = flatArray(array);
+    expect(rta).toEqual([1, 2, 5]);
   });
 
-  it("should return []", () => {
-    const arrayA = [];
-    const arrayB = [];
-    const rta = mergeArrays(arrayA, arrayB);
-    expect(rta).toEqual([]);
+  it("should return [1,2,5,3,4]", () => {
+    const array = [
+      [1, 2],
+      [],
+      [5],
+      [3, 4]
+    ];
+    const rta = flatArray(array);
+    expect(rta).toEqual([1, 2, 5, 3, 4]);
   });
 });
